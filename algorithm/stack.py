@@ -6,31 +6,37 @@
 # empty : 스택이 비어있으면 1, 아니면 0을 출력
 # top : 스택의 가장 위에 있는 정수를 출력
 
-
 import sys
 
 n = int(sys.stdin.readline())
 stack = []
 
 for i in range(n):
-    a = input().split()
-    if a[0] == 'push':
-        stack.append(a[1])
-    elif a[0] == 'pop':
-        if len(stack):
-            print(stack[-1])
-            stack.pop()
-        else:
+    word = sys.stdin.readline().split()
+    order = word[0]
+    
+    if order == 'push':
+        value = word[0]
+        stack.append(value)
+    
+    elif order == 'pop':
+        if not stack:
             print(-1)
-    elif a[0] == 'size':
+        else:
+            print(stack.pop())
+            
+    elif order == 'size':
         print(len(stack))
-    elif a[0] == 'empty':
-        if len(stack):
-            print(0)
-        else:
+        
+    elif order == 'empty':
+        if not stack:
             print(1)
-    else:
-        if len(stack):
-            print(stack[-1])
         else:
+            print(0)
+            
+    elif order == 'top':
+        if not stack:
             print(-1)
+        else:
+            print(stack[-1])
+            
