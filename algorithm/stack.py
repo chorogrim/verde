@@ -6,37 +6,54 @@
 # empty : 스택이 비어있으면 1, 아니면 0을 출력
 # top : 스택의 가장 위에 있는 정수를 출력
 
+
 import sys
 
+# 입력 받을 값을 n에 대입
 n = int(sys.stdin.readline())
+# stack을 저장하기 위한 리스트 선언
 stack = []
 
+# 반복문을 통해 입력 받는 값을 처리
 for i in range(n):
+    # word라는 변수에 들어온 값을 앞,뒤로 쪼개줌
+    # 쪼개준 값을 다시 전달 받고, 값을 반환할 때 index 형태로 돌려줌
     word = sys.stdin.readline().split()
+    # order라는 변수에 word의 0을 대입. 명령(push, pop, size, empty, top)이 order에 담김
     order = word[0]
     
+    # order가 push일 경우
     if order == 'push':
+        # value는 word의 1번째 값이 됨(value 값 = 입력 받은 값을 split을 쪼개서 뒤에 정수가 들어있는 값)
         value = word[0]
+        # stack에 value 값을 넣어줌
         stack.append(value)
     
+    # order가 pop일 경우
     elif order == 'pop':
+        # stack이 없다면 -1을 출력, 그렇지 않다면 stack의 pop을 출력
         if not stack:
             print(-1)
         else:
             print(stack.pop())
-            
+     
+    # order가 size일 경우        
     elif order == 'size':
+        # stack에 들어있는 정수의 개수를 출력
         print(len(stack))
-        
+    
+    # order가 empty일 경우  
     elif order == 'empty':
+        # stack이 없을 경우 1을 출력, 그렇지 않다면 0을 출력
         if not stack:
             print(1)
         else:
             print(0)
-            
+    
+    # order가 top일 경우      
     elif order == 'top':
+        # stack이 없다면 -1을 출력, 그렇지 않다면 stack의 맨 첫 번째(즉, 가장 마지막 값)을 출력
         if not stack:
             print(-1)
         else:
             print(stack[-1])
-            
