@@ -24,7 +24,4 @@ for i in range(int(sys.stdin.readline())):
             print(heapq.heappop(arr))
     # 받은 값이 0이 아닌 경우, 최소 힙으로 생성
     else:
-        heapq.heappush(arr, x)
-
-
-        
+        heapq.heappush(arr, x)        
