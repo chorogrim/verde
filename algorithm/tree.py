@@ -36,7 +36,7 @@ def inorder(v):
     if v != '.':
         # 재귀적으로 왼쪽 노드 탐색
         inorder(tree[v][0])
-        # 루트 노드 출력 후 띄어쓰기
+        # 루트 노드 출력 
         print(v, end='')
         # 재귀적으로 오른쪽 노드 탐색
         inorder(tree[v][1])
@@ -49,7 +49,7 @@ def postorder(v):
         postorder(tree[v][0])
         # 재귀적으로 오른쪽 노드 탐색
         postorder(tree[v][1])
-        # 루트 노드 출력 후 띄어쓰기
+        # 루트 노드 출력 
         print(v, end='')
         
 preorder('A')
