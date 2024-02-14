@@ -53,9 +53,7 @@ def postorder(v):
         print(v, end='')
         
 preorder('A')
-# preorder의 ('A') 출력
 print()
 inorder('A')
-# inorder의 ('A') 출력
 print()
 postorder('A')
