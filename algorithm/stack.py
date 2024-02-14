@@ -44,7 +44,7 @@ for i in range(n):
     
     # order가 empty일 경우  
     elif order == 'empty':
-        # stack이 없을 경우 1을 출력, 그렇지 않다면 0을 출력
+        # stack이 없다면 1을 출력, 그렇지 않다면 0을 출력
         if not stack:
             print(1)
         else:
