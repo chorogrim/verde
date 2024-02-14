@@ -32,4 +32,3 @@ for i in range(m):
         print(dict[ml[i]], end=' ')
     else:
         print(0, end= ' ')
-        
