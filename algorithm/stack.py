@@ -2,6 +2,7 @@
 # 정수를 저장하는 스택을 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.
 # push x : 정수 x를 스택에 넣는 연산
 # pop : 스택에서 가장 위에 있는 정수를 빼고, 그 수를 출력
+#       스택에 들어있는 정수가 없을 경우에는 -1을 출력
 # size : 스택에 들어있는 정수의 개수를 출력
 # empty : 스택이 비어있으면 1, 아니면 0을 출력
 # top : 스택의 가장 위에 있는 정수를 출력
@@ -9,7 +10,7 @@
 
 import sys
 
-# 입력 받을 값을 n에 대입
+# 입력받을 값을 n에 대입
 n = int(sys.stdin.readline())
 # stack을 저장하기 위한 리스트 선언
 stack = []
@@ -24,19 +25,17 @@ for i in range(n):
     
     # order가 push일 경우
     if order == 'push':
-        # value는 word의 1번째 값이 됨(value 값 = 입력 받은 값을 split을 쪼개서 뒤에 정수가 들어있는 값)
-        value = word[0]
-        # stack에 value 값을 넣어줌
-        stack.append(value)
+        # stack에 word 두번째 값을 넣어줌
+        stack.append(word[1])
     
     # order가 pop일 경우
     elif order == 'pop':
-        # stack이 없다면 -1을 출력, 그렇지 않다면 stack의 pop을 출력
-        if not stack:
-            print(-1)
-        else:
+        # stack의 길이가 0일 경우 stack의 첫 번째 요소를 출력, 그렇지 않다면 -1을 출력
+        if len(stack) != 0:
             print(stack.pop())
-     
+        else:
+            print(-1)     
+
     # order가 size일 경우        
     elif order == 'size':
         # stack에 들어있는 정수의 개수를 출력
@@ -57,3 +56,5 @@ for i in range(n):
             print(-1)
         else:
             print(stack[-1])
+
+## 맞았음! ##
