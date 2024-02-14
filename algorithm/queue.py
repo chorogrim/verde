@@ -30,7 +30,7 @@ for i in range(n):
         queue.append(int(word[1]))
     # order와 pop와 같다면
     elif order == 'pop':
-        # queue의 길이가 0보다 작다면 queue의 첫 번째 요소를 제거(제일 앞의 요소 삭제)
+        # queue의 길이가 0일 경우 queue의 첫 번째 요소를 제거(제일 앞의 요소 삭제)
         if len(queue) != 0:
             print(queue.pop(0))
         # 그렇지 않다면 -1을 출력
@@ -51,7 +51,7 @@ for i in range(n):
     
     # order와 front와 같다면
     elif order == 'front':
-        # queue의 길이가 0일 경우 -1을 출력, 그렇지 않다면 queue의 첫 번째 값을 출력
+        # queue의 길이가 0일 경우 queue의 첫 번째 값을 출력, 그렇지 않다면 -1을 출력
         if len(queue) == 0:
             print(-1)
         else:
@@ -59,7 +59,7 @@ for i in range(n):
 
     # order와 back이 같다면
     elif order == 'back':
-        # queue의 길이가 0일 경우 -1을 출력, 그렇지 않다면 queue의 마지막 값을 출력
+        # queue의 길이가 0일 경우 queue의 마지막 값을 출력, 그렇지 않다면 -1을 출력
         if len(queue) == 0:
             print(-1)
         else:
