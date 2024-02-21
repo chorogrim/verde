@@ -51,16 +51,27 @@ def solution(sizes, limits, tasks):
     # result 리스트를 반환하여 각 로봇의 작업 완료 여부를 나타내는 결과를 얻기
     return result 
 
+
+# 번호 순서가 빠른대로 1차원 정수 배열에 담아 반환하는 함수
+def get_ordered_result(sizes, limits, tasks):
+    
+    # 주어진 solution() 함수를 사용하여 입력값을 처리하고 결과를 반환
+    result = solution(sizes, limits, tasks)
+    
+    # 반환된 결과를 sorted() 함수를 사용하여 오름차순으로 정렬
+    return sorted(result)
+
+
 # input
 sizes = [10, 2, 13, 1]
 limits = [300, 31, 100, 5]
 tasks = ["3tt", "4ttt", "8t", "4ttttt"]
 # output
-print(solution(sizes, limits, tasks))
+print(get_ordered_result(sizes, limits, tasks))
 
 # input
 sizes = [100, 100, 100]
 limits = [1000000000, 100, 3]
 tasks = ["9tttt", "1t", "4"]
 # output
-print(solution(sizes, limits, tasks))
+print(get_ordered_result(sizes, limits, tasks))
