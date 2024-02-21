@@ -1,12 +1,4 @@
-## input, output
-# sizes = [10, 2, 13, 1]
-# limits = [300, 31, 100, 5]
-# tasks = ["3tt", "4ttt", "8t", "4ttttt"]
-
-# sizes = [100, 100, 100]
-# limits = [1000000000, 100, 3]
-# tasks = ["9tttt", "1t", "4"]
-
+# n개의 로봇이 각각 주어진 시간 내에 주어진 작업을 끝낼 수 있는지 여부를 판단하는 문제
 
 # 반복 작업에 걸리는 시간을 계산하는 함수
 def calculate_time(size, repeat):
@@ -58,3 +50,17 @@ def solution(sizes, limits, tasks):
 
     # result 리스트를 반환하여 각 로봇의 작업 완료 여부를 나타내는 결과를 얻기
     return result 
+
+# input
+sizes = [10, 2, 13, 1]
+limits = [300, 31, 100, 5]
+tasks = ["3tt", "4ttt", "8t", "4ttttt"]
+# output
+print(solution(sizes, limits, tasks))
+
+# input
+sizes = [100, 100, 100]
+limits = [1000000000, 100, 3]
+tasks = ["9tttt", "1t", "4"]
+# output
+print(solution(sizes, limits, tasks))
