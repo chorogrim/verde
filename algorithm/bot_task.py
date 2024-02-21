@@ -42,7 +42,7 @@ def solution(sizes, limits, tasks):
             # 숫자인지 아닌지 확인하는 함수
             if char.isdigit(): 
 
-                # 숫자라면, 글자를 정수로 변환하여 해당 작업을 수행하는데 필요한 시간을 계산하고 total_time에 더함
+                # 숫자라면, 글자를 정수로 변환하여 해당 작업을 수행하는데 필요한 시간을 계산하고 total_time에 더하기
                 total_time += calculate_time(size, int(char))
 
         # 주어진 시간 내에 작업을 끝낼 수 있는지 확인
