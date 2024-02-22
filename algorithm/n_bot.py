@@ -1,4 +1,9 @@
-# 주어진 작업 형태, 작업 크기를 이용해 해당 작업을 수행하는데 걸리는 시간 계산 함수 정의
+## n개의 로봇이 각각 주어진 시간 내에 주어진 작업을 끝낼 수 있는지 여부를 판단하는 문제
+## 작업의 크기 = sizes, 주어진 시간 = limits, 반복 작업 형태 = tasks
+## 각 로봇들이 주어진 시간 내에 주어진 작업을 끝낼 수 있다면 1을, 끝낼 수 없다면 0을
+## 로봇 순서가 빠른 순서대로 1차원 정수 배열에 담아 return 하도록 solution 함수르를 완성
+
+# 각 로봇이 주어진 작업 형태, 작업 크기를 이용해 작업 수행하는데 걸리는 시간 계산하는 함수
 def calculate_time(task, size):
     
     # 문자열 task에서 문자 't'의 개수를 세어 이어 붙인 작업의 개수를 구함
@@ -10,7 +15,7 @@ def calculate_time(task, size):
     # 반복 횟수 k와 작업 크기를 이용하여 작업에 걸리는 시간을 계산
     return k * (size ** t_count)
 
-# 각 로봇이 주어진 시간 내에 작업을 완료할 수 있는지를 판단하는 함수 정의
+# 각 로봇이 주어진 시간 내에 작업을 완료할 수 있는지 알려주는 함수
 def solution(sizes, limits, tasks):
     
     # 결과를 담을 빈 리스트 선언
@@ -38,16 +43,19 @@ def solution(sizes, limits, tasks):
     # 결과 리스트 반환
     return results
 
-# input
+
+# 예시로 주어진 입력 값
 sizes = [10, 2, 13, 1]
 limits = [300, 31, 100, 5]
 tasks = ["3tt", "4ttt", "8t", "4ttttt"]
-# output
+# 출력 값
 print(solution(sizes, limits, tasks)) 
+# [1, 0, 0, 1]
 
-# input
+# 예시로 주어진 입력 값
 sizes = [100, 100, 100]
 limits = [1000000000, 100, 3]
 tasks = ["9tttt", "1t", "4"]
-# output
+# 출력 값
 print(solution(sizes, limits, tasks)) 
+# [1, 1, 0]
