@@ -10,7 +10,8 @@
 import sys
 
 input = sys.stdin.readline
-sys.setrecursionlimit(10**6) # 재귀 허용 깊이를 수동으로 늘려주는 코드
+# 재귀 허용 깊이를 수동으로 늘려주는 코드
+sys.setrecursionlimit(10**6)
 
 n, m, r = map(int, input().split()) # 입력받을 세개의 정수 선언(n = 정점의 개수, m = 간선의 개수, r = 시작 정점의 번호)
 graph = [[] for _ in range(n+1)] # 빈 리스트를 요소로 갖는 리스트로 초기화. 각 인덱스는 정점을 나타내고, 해당 정점과 연결된 다른 정점들의 리스트를 저장
@@ -21,8 +22,10 @@ for _ in range(m): # m번 반복하면서 각 간선에 대한 정보를 입력�
     graph[a].append(b)
     graph[b].append(a)
 
-def DFS(v, cnt): # 깊이 우선 탐색 시작
-    visited[v] = cnt # 현재 정점 v와 현재까지 방문 순서 cnt를 인자로 받음
+# 깊이 우선 탐색 시작
+def DFS(v, cnt):
+    # 현재 정점 v와 현재까지 방문 순서 cnt를 인자로 받음
+    visited[v] = cnt 
 
     # 방문 순서를 갱신하기 위해 tmp 값 이용
     tmp = 1
@@ -39,5 +42,3 @@ def DFS(v, cnt): # 깊이 우선 탐색 시작
 DFS(r, 1)
 # 줄바꿈 옵션 추가하여 방문 순서 출력(첫 번째 정점은 방문 순서에 포함시키지 않고, 나머지 정점들의 방문 순서를 출력)
 print(*visited[1:], sep='\n')
-
-
