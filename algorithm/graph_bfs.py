@@ -39,7 +39,6 @@ def bfs(x_start,y_start):
             # 새로운 좌표를 큐에 추가하여 다음 탐색을 위해 준비
             queue.append([nx,ny])
 
-
 # 미로의 세로와 가로 크기. n과 m을 입력받기
 n, m = map(int, sys.stdin.readline().split()) 
 # 상하좌우 이동을 나타내는 배열
@@ -51,7 +50,6 @@ myMap = []
 for i in range(n):
     # 입력으로 받은 한 줄을 공백을 기준으로 분리하여 정수형으로 변환한 리스트를 만듦
     myMap.append(list(map(int,sys.stdin.readline().split())))
-
 
 # BFS를 수행한 결과인 각 칸까지의 최단거리 저장
 answer = []
