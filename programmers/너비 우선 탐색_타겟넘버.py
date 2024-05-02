@@ -1,7 +1,7 @@
 # 사용할 수 잇는 숫자가 담긴 배열 numbers, 타겟 넘버 target이 매개변수로 주어질 때
 # 숫자를 적절히 더하고 빼서 타겟 넘버를 만드는 방법의 수를 return 하도록 solution 함수를 작성해주세요.
 
-def solution(numbers, target): # numbers, target 두 개의 매개변수를 받음
+def solution(numbers, target): 
     answer = 0 # 경우의 수를 저장하기 위한 것으로 초기값 0으로 설정
     ansList = [0] # 계산된 가능한 결과값을 저장하기 위한 리스트
     
