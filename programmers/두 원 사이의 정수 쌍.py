@@ -1,10 +1,9 @@
-def solution(targets):
-    answer = 0
-    targets.sort(key = lambda x: [x[1], x[0]])
-    
-    s = e = 0
-    for target in targets:
-        if target[0] >= e:
-            answer += 1
-            e = target[1]
-    return answer
+from math import sqrt
+
+def solution(r1, r2):
+    quar = 0
+    for i in range(0, r1):
+        quar += int(sqrt(r2**2 - i**2)) - int(sqrt(r1**2 - i**2 - 1))
+    for i in range(r1, r2):
+        quar += int(sqrt(r2**2 - i**2))
+    return quar * 4
