@@ -1,7 +1,7 @@
 from collections import deque
 
 def check_condition(r,c,nr,nc,k,move_cnt):
-    # 도착지점까지 남은 거리와, 이동 가능한 횟수를 비교
+    # 도착 지점까지 남은 거리와, 이동 가능한 횟수를 비교
     remain_cnt = abs(r-nr) + abs(c-nc)
     possible_cnt = k-move_cnt
     # 가능 횟수 < 남은 횟수 : false
@@ -33,7 +33,7 @@ def bfs(n,m,x,y,r,c,k):
             # 이동 가능 조건
             if not(0<nr<=n and 0<nc<=m) or move_cnt >= k or not check_condition(r,c,nr,nc,k,move_cnt+1):
                 continue
-            # 조건을 만족하는 경우 -> (d,l,r,u)로 이동하므로, 조건 만족하면 무조건 최단경로임
+            # 조건을 만족하는 경우 -> (d,l,r,u)로 이동하므로, 조건 만족하면 무조건 최단 경로임
             dq.append((nr,nc,move_cnt+1,route+moveDir[i]))
             break
     return "impossible"
