@@ -47,4 +47,3 @@ def solution(n, m, x, y, r, c, k):
     remainDir = ['ud', 'du', 'lr', 'rl']
     # bfs 실행해서 최단경로를 탐색
     return bfs(n,m,x,y,r,c,k)
-
