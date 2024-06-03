@@ -3,7 +3,6 @@ def solution(k, tangerine):
     k: 목표 개수, 얼마나 많은 귤을 선택해야 하는지 나타냄
     tangerine: 귤의 크기를 나타내는 리스트
     '''
-
     answer = 0
     a={} # 각 크기별 귤의 개수를 저장할 딕셔너리 a를 초기화
 
