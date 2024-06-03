@@ -1,8 +1,12 @@
 def solution(stones, k):
+    '''
+    stones: 징검다리의 각 돌의 내구도를 나타내는 리스트
+    k: 연속으로 건너뛸 수 있는 최대 거리
+    '''
     answer = 0
-    s = 1
-    # 최대 밟을 수 있는 횟수
-    e = max(stones)
+    s = 1 # 이진 탐색의 시작 값
+    e = max(stones) # e를 stones 리스트의 최대 값으로 초기화
+    
     while s <= e:
         # mid 명이 건넌 후 다음 사람이 건널 수 있는가?
         mid = (s+e)//2 
