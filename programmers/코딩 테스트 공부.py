@@ -1,4 +1,9 @@
-def solution(alp, cop, problems): # apl: 알고리즘 능력, cop: 코딩 능력, problems: 문제 목록
+def solution(alp, cop, problems):
+    '''
+    apl: 알고리즘 능력
+    cop: 코딩 능력
+    problems: 문제 목록
+    '''
     max_alp_req, max_cop_req = [0, 0]  # 0으로 초기화
     
     # 각 문제에서 요구하는 최대 알고리즘 능력과 최대 코딩 능력을 저장
