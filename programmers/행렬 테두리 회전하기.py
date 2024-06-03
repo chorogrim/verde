@@ -1,7 +1,3 @@
-# 행렬의 세로 길이(행 개수) rows, 가로 길이(열 개수) columns, 그리고 회전들의 목록 queries가 주어질 때
-# 각 회전들을 배열에 적용한 뒤, 그 회전에 의해 위치가 바뀐 숫자들 중 가장 작은 숫자들을 순서대로 배열에 담아
-# return 하도록 solution 함수를 완성해주세요.
-
 def solution(rows, columns, queries):
     answer = [] # 최종적으로 반환할 결과를 저장할 빈 리스트
     arr = [] # 행렬을 저장할 빈 리스트
