@@ -1,4 +1,9 @@
-def solution(id_list, report, k): # 사용자들의 아이디, 사용자들 간의 신고 이력, 제재 기준이 되는 신고 횟수 
+def solution(id_list, report, k):
+    '''
+    id_list: 사용자들의 아이디
+    report: 사용자들 간의 신고 이력
+    k: 제재 기준이 되는 신고 횟수 
+    '''
     answer = [] # 각 사용자가 제재당한 횟수를 저장할 리스트
     report_list = set() # 중복된 신고를 방지하기 위함
     reporter = {} # 각 사용자가 신고한 사용자들의 목록을 저장하는 딕셔너리
