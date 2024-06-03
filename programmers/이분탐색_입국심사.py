@@ -1,4 +1,8 @@
 def solution(n, times):
+    '''
+    n: 전체 인원 수
+    times: 각 심사대의 처리 시간
+    '''
     start = 1 # 최소 가능한 시간을 1초 초기화
     end = max(times) * n # 종료 시간을 설정
     
