@@ -9,4 +9,3 @@ def solution(my_string, indices):
     
     for idx in indices: # 정렬된 역순의 인덱스 리스트를 순회
         del string_list[idx] # 해당 인덱스의 문자 삭제
-    
