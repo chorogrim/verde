@@ -1,5 +1,10 @@
 def solution(today, terms, privacies):
-    answer = []
+    '''
+    today: 현재 날짜
+    terms: 각 개인정보 보유 기간
+    privacies: 개인정보 항목과 수집 날짜
+    '''
+    answer = [] # 결과 저장
     today = list(map(int, today.split('.'))) # 문자열을 '.' 기준으로 분리한 후, 각 부분을 정수형 리스트로 변환
     today = today[2] + today[1] * 28 + today[0] * 28 * 12 # today를 '년.월.일' 형식에서 일로 변환
 
@@ -12,6 +17,7 @@ def solution(today, terms, privacies):
         day, code = privacies[i].split() # 각 항목을 날짜와 코드로 분리 
         day = list(map(int, day.split('.'))) # day 문자열을 '.'기준으로 분리한 후, 각 부분을 정수형 리스트로 변환
         day = day[2] + day[1] * 28 + day[0] * 28 * 12 # 일 단위로 변환
+        
         if day + dic[code] <= today: # 개인정보 저장 날짜에 해당 코드의 유효 기간을 더한 값이 오늘 날짜보다 작거나 같으면, 만료된 것으로 간주
             answer.append(i + 1) # 만료된 개인정보의 인덱스를 결과 리스트에 추가
 
