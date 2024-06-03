@@ -56,13 +56,13 @@ def solution(rows, columns, queries):
         for i in range(1, x_len + 1):
             arr[s_x + i][s_y] = num_list[cnt]
             cnt += 1
-        s_x += x_len
+        s_x += x_len # y 좌표를 왼쪽 끝으로 업데이트
 
         # 좌측 이동
         for i in range(1, y_len + 1):
             arr[s_x][s_y - i] = num_list[cnt]
             cnt += 1
-        s_y -= y_len
+        s_y -= y_len # 위쪽 이동하며 값을 업데이트
 
         # 위쪽 이동
         for i in range(1, x_len + 1):
