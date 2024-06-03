@@ -1,7 +1,3 @@
-# 마라톤에 참여한 선수들의 이름이 담긴 배열 participant와
-# 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때,
-# 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.
-
 def solution(participant, completion):
     answer = '' # 반환할 값을 초기화
     p_dict = {} # 참가자 이름을 키로 하고, 등장 횟수를 값으로 가지는 p_dict 딕셔너리
