@@ -2,7 +2,13 @@ def solution(n):
     answer = [] # 원판을 옮긴 경로를 저장할 빈 리스트 
     
     def move(n, start, des, temp):
-        a = []
+        '''
+        n: 옮겨야 할 원판의 개수
+        start: 출발 기둥의 번호
+        des: 목적지 기둥의 번호
+        temp: 임시 기둥의 번호
+        '''
+        a = [] # 원판을 옮긴 경로를 임시로 저장할 빈 리스트
         if(n == 1): # 만약 옮겨야 할 원판이 1개라면
             a.append(start) # 출발 기둥 번호를 리스트 a에 추가
             a.append(des) # 목적지 기둥 번호를 리스트 a에 추가
