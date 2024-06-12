@@ -18,6 +18,4 @@ def solution(cookie):
                 end_value += cookie[end_idx] # 오른쪽 아들의 쿠키 합계에 cookie[end_idx]를 더함
             else: # 위의 조건을 만족하지 않는다면
                 break # 종료
-    return max_value # 두 아들이 동일한 개수의 쿠키를 가질 수 있는 최대 쿠키의 개수 반환    
-
-                               
+    return max_value # 두 아들이 동일한 개수의 쿠키를 가질 수 있는 최대 쿠키의 개수 반환                         
