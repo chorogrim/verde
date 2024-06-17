@@ -1,3 +1,4 @@
+# 3. 창 닫기
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 from PyQt5.QtCore import QCoreApplication
