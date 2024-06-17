@@ -1,4 +1,4 @@
-# 날짜와 시간 표시하기
+# 9. 날짜와 시간 표시하기
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import QDate, Qt
