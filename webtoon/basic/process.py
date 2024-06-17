@@ -1,4 +1,4 @@
-# 필요한 모듈 불러오기
+# 1. 창 띄우기
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget
 
