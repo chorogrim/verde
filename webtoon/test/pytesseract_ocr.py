@@ -37,7 +37,7 @@ class OCRQualityChecker(QMainWindow):
         self.scroll_area.setWidgetResizable(True)
         self.layout.addWidget(self.scroll_area)
 
-        # ocr 결과를 표시할 QTextEdit 위젯 생성하고 레이아웃에 추가
+        # OCR 결과를 표시할 QTextEdit 위젯 생성하고 레이아웃에 추가
         self.text_edit = QTextEdit(self)
         self.layout.addWidget(self.text_edit)
 
