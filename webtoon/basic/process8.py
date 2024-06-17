@@ -1,3 +1,4 @@
+# 8. 창을 화면의 가운데로 만들기
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QDesktopWidget
 
