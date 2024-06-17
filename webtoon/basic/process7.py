@@ -1,3 +1,4 @@
+# 7. 툴바 만들기
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, qApp
 from PyQt5.QtGui import QIcon
