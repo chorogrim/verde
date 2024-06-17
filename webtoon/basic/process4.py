@@ -1,3 +1,4 @@
+# 4. 툴팁 나타내기
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QToolTip
 from PyQt5.QtGui import QFont
