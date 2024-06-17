@@ -1,4 +1,4 @@
-# 2. 어플리케이션 아이콘 넣기
+# 10. 스타일 꾸미기
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
 
