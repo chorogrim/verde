@@ -45,6 +45,8 @@ def extract_text_with_coords(image_path):
                 'w': w,
                 'h': h
             })
+            # # 경계 상자 그리기
+            # cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
     return data
 
