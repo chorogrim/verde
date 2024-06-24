@@ -8,9 +8,7 @@ import numpy as np # Numpy 라이브러리를 가져와서 배열 연산 지원
 # Tesseract의 경로 설정 (Windows에서만 필요)
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-
 app = Flask(__name__) # Flask 애플리케이션 객체 생성
-
 
 def ocr_core(img):
     """
