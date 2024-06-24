@@ -1,44 +1,44 @@
-from flask import Flask, request, jsonify, render_template
-from PIL import Image
-import pytesseract
-import cv2
-import numpy as np
+from flask import Flask, request, jsonify, render_template # 웹 프레임워크를 사용하기 위해 필요한 모듈 
+from PIL import Image # 이미지 처리를 위한 모듈
+import pytesseract # Tesseract OCR 엔진을 사용하기 위해 필요한 모듈
+import cv2 # OpenCV 라이브러리를 사용하여 이미지 처리 기능 추가
+import numpy as np # Numpy 라이브러리를 가져와서 배열 연산 지원
 
 
 # Tesseract의 경로 설정 (Windows에서만 필요)
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 
-app = Flask(__name__)
+app = Flask(__name__) # Flask 애플리케이션 객체 생성
 
 
 def ocr_core(img):
     """
-    이미지에서 텍스트를 추출
+    이미지를 입력으로 받아 텍스트를 추출
     """
-    text = pytesseract.image_to_string(img, lang='kor')
-    return text
+    text = pytesseract.image_to_string(img, lang='kor') # 이미지에서 한국어 텍스트 추출
+    return text # 추출된 텍스트를 반환
 
 def extract_text_with_coords(image_path):
     """
-    이미지에서 텍스트와 해당 좌표를 추출
+    이미지 파일 경로를 입력으로 받아 텍스트와 해당 좌표를 추출
     """
-    img = cv2.imread(image_path)
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    blur = cv2.GaussianBlur(gray, (5, 5), 0)
-    ret, thresh = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+    img = cv2.imread(image_path) # 이미지를 읽어옴
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) # 이미지를 회색조로 변환
+    blur = cv2.GaussianBlur(gray, (5, 5), 0) # 노이즈를 줄이기 위해 이미지를 가우시안 블러 처리
+    ret, thresh = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU) # 이미지 이진화 수행
 
     # 컨투어 찾기
-    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE) # 이진화된 이미지에서 컨투어(윤곽선) 찾기
 
-    data = []
+    data = [] # 텍스트와 좌표 정보를 저장할 리스트
 
-    for contour in contours:
-        x, y, w, h = cv2.boundingRect(contour)
-        roi = img[y:y + h, x:x + w]
-        text = pytesseract.image_to_string(roi, lang='kor').strip()
-        if text:
-            data.append({
+    for contour in contours: # 각 컨투어에 대해 반복
+        x, y, w, h = cv2.boundingRect(contour) # 컨투어의 경계 상자 계산
+        roi = img[y:y + h, x:x + w] # 경계 상자 내부의 관심 영역을 추출
+        text = pytesseract.image_to_string(roi, lang='kor').strip() # ROI에서 텍스트를 추출
+        if text: # 텍스트가 존재하는 경우 
+            data.append({ # 데이터를 리스트에 추가
                 'text': text,
                 'x': x,
                 'y': y,
@@ -49,34 +49,33 @@ def extract_text_with_coords(image_path):
     return data
 
 @app.route('/')
-def home():
-    return render_template('index.html')
+def home(): # 홈페이지 요청을 처리
+    return render_template('index.html') # 템플릿을 렌더링하여 응답으로 반환
 
-@app.route('/upload', methods=['POST'])
-def upload_file():
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file part'})
+@app.route('/upload', methods=['POST']) # 파일 업로드 요청을 처리하는 URL 경로 지정
+def upload_file(): # 파일 업로드 요청을 처리
+    if 'file' not in request.files: # 요청에 파일이 포함되어 있는지 확인
+        return jsonify({'error': 'No file part'}) # 파일이 없으면 오류 메시지를 json 형태로 반환
 
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'})
+    file = request.files['file'] # 업로드된 파일 가져옴
+    if file.filename == '': # 파일이 선택되지 않았는지 확인 
+        return jsonify({'error': 'No selected file'}) # 파일이 선택되지 않았으면 오류 메시지를 json 형태로 반환
 
-    if file:
-        img = Image.open(file.stream)
-        img.save("./uploaded_image.png")
+    if file: # 파일이 존재하면 처리
+        img = Image.open(file.stream) # 업로드된 파일을 이미지로 열기
+        img.save("./uploaded_image.png") # 이미지를 저장
         
-        ocr_data = extract_text_with_coords("./uploaded_image.png")
+        ocr_data = extract_text_with_coords("./uploaded_image.png") # 이미지에서 텍스트와 좌표 추출
         
-        # 데이터 품질 확인 (여기서는 단순히 텍스트가 존재하는지 확인)
-        data_quality = []
-        for item in ocr_data:
-            if item['text']:  # 텍스트가 존재하면 데이터 품질이 양호하다고 판단
-                item['quality'] = 'Good'
-            else:
-                item['quality'] = 'Poor'
-            data_quality.append(item)
+        data_quality = [] # 데이터 품질 정보를 저장할 리스트
+        for item in ocr_data: # 각 추출된 데이터 항목에 대해 반복
+            if item['text']:  # 텍스트가 존재하면
+                item['quality'] = 'Good' # 데이터 품질을 good으로 설정
+            else: # 텍스트가 존재하지 않다면
+                item['quality'] = 'Poor' # 데이터 품질을 poor로 설정
+            data_quality.append(item) # 데이터 품질 정보를 리스트에 추가
         
-        return jsonify(data_quality)
+        return jsonify(data_quality) # 데이터 품질 정보를 json 형태로 반환
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) 
