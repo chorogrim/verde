@@ -5,24 +5,23 @@ import cv2
 import numpy as np
 
 
+# Tesseract의 경로 설정 (Windows에서만 필요)
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 
 app = Flask(__name__)
 
-# Tesseract의 경로 설정 (Windows에서만 필요)
-# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 def ocr_core(img):
     """
-    이 함수는 이미지에서 텍스트를 추출합니다.
+    이미지에서 텍스트를 추출
     """
     text = pytesseract.image_to_string(img, lang='kor')
     return text
 
 def extract_text_with_coords(image_path):
     """
-    이미지에서 텍스트와 해당 좌표를 추출합니다.
+    이미지에서 텍스트와 해당 좌표를 추출
     """
     img = cv2.imread(image_path)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
