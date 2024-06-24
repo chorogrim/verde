@@ -35,8 +35,18 @@ def extract_text_with_coords(image_path):
 
     for contour in contours: # 각 컨투어에 대해 반복
         x, y, w, h = cv2.boundingRect(contour) # 컨투어의 경계 상자 계산
+
+        # # ROI 확장 (margin 추가)
+        # margin = 5
+        # x_roi = max(0, x - margin)
+        # y_roi = max(0, y - margin)
+        # w_roi = min(img.shape[1] - x_roi, w + 2 * margin)
+        # h_roi = min(img.shape[0] - y_roi, h + 2 * margin)
+        # roi = img[y_roi:y_roi + h_roi, x_roi:x_roi + w_roi]
+        
         roi = img[y:y + h, x:x + w] # 경계 상자 내부의 관심 영역을 추출
         text = pytesseract.image_to_string(roi, lang='kor').strip() # roi에서 텍스트를 추출
+        
         if text: # 텍스트가 존재하는 경우
             data.append({ # 데이터를 리스트에 추가
                 'text': text,
@@ -47,7 +57,9 @@ def extract_text_with_coords(image_path):
             })
             # # 경계 상자 그리기
             # cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
+    # # 텍스트 인식 영역이 그려진 이미지를 저장 
+    # cv2.imwrite("output_with_boxes.png", img)
+    
     return data
 
 @app.route('/')
