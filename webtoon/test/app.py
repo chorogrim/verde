@@ -71,7 +71,7 @@ def upload_file(): # 파일 업로드 요청을 처리
     if 'file' not in request.files: # 요청에 파일이 포함되어 있는지 확인
         return jsonify({'error': 'No file part'}) # 파일이 없으면 오류 메시지를 json 형태로 반환
 
-    file = request.files['file'] # 업로르된 파일 가져옴
+    file = request.files['file'] # 업로드된 파일 가져옴
     if file.filename == '': # 파일이 선택되지 않았는지 확인
         return jsonify({'error': 'No selected file'}) # 파일이 선택되지 않았으면 오류 메시지를 json 형태로 반환
 
