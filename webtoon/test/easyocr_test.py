@@ -2,7 +2,7 @@ import easyocr
 import matplotlib.pyplot as plt
 import cv2
 
-# EasyOCR 리더 객체 생성 (한국어와 영어 설정)
+# EasyOCR 리더 객체 생성 (한국어, 영어로 설정)
 reader = easyocr.Reader(['ko', 'en'])
 
 # 이미지 파일 경로
