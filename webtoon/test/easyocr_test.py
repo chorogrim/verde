@@ -1,15 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[3]:
-
-
-pip install easyocr
-
-
-# In[20]:
-
-
 import easyocr
 import matplotlib.pyplot as plt
 import cv2
@@ -27,7 +15,6 @@ image = cv2.imread(image_path)
 results = reader.readtext(image_path)
 
 # 추출된 텍스트 출력
-
 for (bbox, text, prob) in results:
     print(f'Text: {text}, Probability: {prob}')
     
@@ -47,10 +34,3 @@ plt.figure(figsize=(10, 10))
 plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 plt.axis('off')
 plt.show()
-
-
-# In[ ]:
-
-
-
-
