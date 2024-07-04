@@ -1,6 +1,7 @@
 import easyocr
 from PIL import Image, ImageDraw, ImageFont
 
+
 # EasyOCR Reader 객체 생성
 reader = easyocr.Reader(['ko', 'en'], gpu=False)
 
