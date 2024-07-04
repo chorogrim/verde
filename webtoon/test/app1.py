@@ -5,6 +5,7 @@ from flask import Flask, request, render_template, redirect, url_for
 from werkzeug.utils import secure_filename
 from threading import Thread
 
+
 # Flask 애플리케이션 생성
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/uploads/'
@@ -39,7 +40,7 @@ def upload_image():
         # 이미지에 텍스트와 위치 표시
         image = Image.open(filepath)
         draw = ImageDraw.Draw(image)
-        font = ImageFont.truetype("./batang.ttc", 20)  # 원하는 폰트를 지정하세요.
+        font = ImageFont.truetype("./batang.ttc", 20)  # 원하는 폰트를 지정
         
         for (bbox, text, prob) in results:
             p0, p1, p2, p3 = [tuple(coord) for coord in bbox]
