@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>OCR Result</title>
+    <title>Result</title>
 </head>
 <body>
     <h1>OCR Result</h1>
-    <h2>Extracted Texts</h2>
     <ul>
-        {% for item in extracted_texts %}
-            <li>{{ item.text }} (Probability: {{ item.probability }})</li>
+        {% for (bbox, text, prob) in results %}
+            <li>{{ text }} (Probability: {{ prob }})</li>
         {% endfor %}
     </ul>
-    <h2>Result Image</h2>
-    <img src="{{ url_for('static', filename=result_image.split('/')[-1]) }}" alt="Result Image">
+    <img src="{{ image_url }}" alt="Result Image">
+    <a href="{{ url_for('upload_form') }}">Upload Another Image</a>
 </body>
 </html>
