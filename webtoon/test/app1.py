@@ -57,4 +57,4 @@ def upload_image():
         return "An error occurred while processing the image.", 500
 
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    app.run('0.0.0.0', port=51875, debug=True)
