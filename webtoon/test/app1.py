@@ -12,7 +12,7 @@ UPLOAD_FOLDER = 'static/uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # EasyOCR Reader 객체 생성
-reader = easyocr.Reader(['ko', 'en'], gpu=False)
+reader = easyocr.Reader(['ko', 'en'], gpu=True)
 
 # 업로드 폴더가 없으면 생성
 if not os.path.exists(UPLOAD_FOLDER):
@@ -51,10 +51,14 @@ def upload_image():
         image.save(result_image_path) # 이미지를 해당 경로에 저장
         
         return render_template('./result.html', results=results, image_url=result_image_path) # result_html 템플릿을 렌더링하여 반환
+        
+except Exception as e:
+    app.logger.error(f"Error processing the image: {e}")
+    return "An error occurred while processing the image.", 500
 
 # Flask 애플리케이션을 백그라운드 스레드에서 실행
 def run_flask():
-    app.run(port=5000, debug=False)
+    app.run(port=5001, debug=False)
 
 flask_thread = Thread(target=run_flask)
 flask_thread.start()
