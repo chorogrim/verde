@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR Results</title>
 </head>
 <body>
-    <h1>OCR Result</h1>
+    <h1>OCR Results</h1>
+    <img src="{{ image_url }}" alt="Result Image"><br>
+    <h2>Detected Texts</h2>
     <ul>
-        {% for (bbox, text, prob) in results %}
-            <li>{{ text }} (Probability: {{ prob }})</li>
-        {% endfor %}
+    {% for result in results %}
+        <li>텍스트: {{ result[1] }} - 위치: {{ result[0] }}</li>
+    {% endfor %}
     </ul>
-    <img src="{{ image_url }}" alt="Result Image">
-    <a href="{{ url_for('upload_form') }}">Upload Another Image</a>
 </body>
 </html>
